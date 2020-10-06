@@ -1,0 +1,82 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "com.example.productflavours"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    flavorDimensions 'default'
+    productFlavors {
+        flavorOne {
+            dimension 'default'
+            applicationId 'com.example.productflavours.one'
+            targetSdkVersion 29
+            minSdkVersion 21
+            versionCode 1
+            versionName '1.0'
+        }
+        flavorTwo {
+            dimension 'default'
+            applicationId 'com.example.productflavours.two'
+            versionCode 1
+            versionName '1.0'
+            targetSdkVersion 29
+            minSdkVersion 21
+        }
+        flavorThree {
+            dimension 'default'
+            applicationId 'com.example.productflavours.three'
+            versionCode 1
+            versionName '1.0'
+            targetSdkVersion 29
+            minSdkVersion 21
+        }
+    }
+    sourceSets {
+        flavorOne {
+            res {
+                srcDirs 'src/flavorOne/res', 'src/flavorOne/res/'
+            }
+        }
+        flavorTwo {
+            res {
+                srcDirs 'src/flavorTwo/res', 'src/flavorTwo/res/'
+            }
+        }
+        flavorThree {
+            res {
+                srcDirs 'src/flavorThree/res', 'src/flavorThree/res/'
+            }
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.1.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+}
